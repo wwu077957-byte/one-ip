@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect, useRef } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { AuthorContact } from "@/components/author-contact";
-import { GithubLink, repositoryUrl } from "@/components/github-link";
 import { HomePageSkeleton } from "@/components/home-page-skeleton";
 import { IpSearch } from "@/components/ip-search";
 import { LanguageSelect } from "@/components/language-select";
@@ -80,7 +79,6 @@ export function AppLayout() {
             <PrivacyToggle iconOnly />
             <LanguageSelect />
             <ThemeToggleButton className="size-8 rounded-full text-muted-foreground" />
-            <GithubLink />
           </div>
         </header>
         <nav
@@ -106,7 +104,6 @@ export function AppLayout() {
             <PrivacyToggle iconOnly />
             <LanguageSelect />
             <ThemeToggleButton className="size-9 shrink-0 rounded-lg text-muted-foreground" />
-            <GithubLink />
           </div>
         </nav>
         <main className="outline-none">
@@ -132,16 +129,6 @@ export function AppLayout() {
         <footer className="max-w-full overflow-x-auto pt-[30px] pb-5 text-center text-[0.82rem] whitespace-nowrap text-subtle max-sm:pt-5 max-sm:pb-4 max-sm:text-left max-sm:text-[0.75rem] max-sm:[-webkit-overflow-scrolling:touch]">
           © {currentYear} IP ·{" "}
           <UnderlineHover asChild>
-            <a
-              href="https://huzhihui.com/blog/one-ip-guide"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t("navigation.documentation")}
-            </a>
-          </UnderlineHover>{" "}
-          ·{" "}
-          <UnderlineHover asChild>
             <Link to="/terms">{t("policy.terms")}</Link>
           </UnderlineHover>{" "}
           ·{" "}
@@ -150,24 +137,7 @@ export function AppLayout() {
           </UnderlineHover>{" "}
           ·{" "}
           <UnderlineHover asChild>
-            <a
-              href={repositoryUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="align-middle"
-            >
-              GitHub
-            </a>
-          </UnderlineHover>{" "}
-          ·{" "}
-          <UnderlineHover asChild>
             <AuthorContact />
-          </UnderlineHover>{" "}
-          ·{" "}
-          <UnderlineHover asChild>
-            <a href="https://ipbot.net">
-              {t("navigation.commercialProjectExample")}
-            </a>
           </UnderlineHover>
         </footer>
       </div>

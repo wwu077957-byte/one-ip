@@ -1,11 +1,11 @@
 import { useState, type ComponentProps } from "react";
 import { t } from "@/i18n";
-import { Mail } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 import { Tabs } from "radix-ui";
 import { AnimatedSegmentedTabs } from "./ui/animated-segmented-tabs";
 import { ResponsiveDialog } from "./ui/responsive-dialog";
 
-type ContactMethod = "wechat" | "email";
+type ContactMethod = "telegram" | "email";
 
 export function AuthorContact({
   children = t("policy.contactAuthor"),
@@ -22,7 +22,7 @@ export function AuthorContact({
         open={open}
         onOpenChange={setOpen}
         title={t("policy.contactAuthor")}
-        description={t("contact.emailOrWeChat")}
+        description={t("contact.emailOrTelegram")}
         dialogClassName="gap-3 sm:max-w-[360px]"
       >
         <AuthorContactDetails />
@@ -31,9 +31,9 @@ export function AuthorContact({
   );
 }
 
-/** WeChat QR code and email shown in the contact dialog. */
+/** Telegram and email shown in the contact dialog. */
 function AuthorContactDetails() {
-  const [method, setMethod] = useState<ContactMethod>("wechat");
+  const [method, setMethod] = useState<ContactMethod>("telegram");
   return (
     <AnimatedSegmentedTabs<ContactMethod>
       label={t("contact.contactMethod")}
@@ -43,18 +43,11 @@ function AuthorContactDetails() {
       triggerClassName="text-xs"
       options={[
         {
-          value: "wechat",
+          value: "telegram",
           label: (
             <>
-              <img
-                src="/contact/wechat.svg"
-                alt=""
-                aria-hidden="true"
-                width="16"
-                height="16"
-                className="size-4"
-              />
-              {t("sites.wechat")}
+              <Send className="size-4" aria-hidden="true" />
+              {t("contact.telegram")}
             </>
           ),
         },
@@ -70,21 +63,20 @@ function AuthorContactDetails() {
       ]}
     >
       <Tabs.Content
-        value="wechat"
-        className="mt-3 space-y-2 text-center outline-none"
+        value="telegram"
+        className="mt-3 space-y-3 py-4 text-center outline-none"
       >
-        <img
-          src="/contact/wechat.jpg"
-          alt={t("contact.weChatQrCode")}
-          width="660"
-          height="669"
-          className="mx-auto h-auto w-48 max-w-full rounded-lg bg-white p-1.5"
-        />
+        <a
+          className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm text-primary hover:bg-accent"
+          href="https://t.me/ice8r"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Send className="size-4" aria-hidden="true" />
+          @ice8r
+        </a>
         <p className="text-xs text-muted-foreground">
-          {t("contact.scanWeChatHint")}
-        </p>
-        <p className="text-xs font-medium text-amber-600 dark:text-amber-500">
-          {t("contact.weChatRemarkHint")}
+          {t("contact.telegramHint")}
         </p>
       </Tabs.Content>
       <Tabs.Content
@@ -93,10 +85,10 @@ function AuthorContactDetails() {
       >
         <a
           className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm text-primary hover:bg-accent"
-          href="mailto:ip@huzhihui.com"
+          href="mailto:dq686@outlook.com"
         >
           <Mail className="size-4" aria-hidden="true" />
-          ip@huzhihui.com
+          dq686@outlook.com
         </a>
         <p className="text-xs text-muted-foreground">
           {t("contact.emailHint")}

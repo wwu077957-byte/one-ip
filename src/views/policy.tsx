@@ -90,12 +90,12 @@ export default function PolicyPage({ page }: { page: "terms" | "privacy" }) {
         <div className="flex flex-wrap items-center gap-4">
           <a
             className="text-sm text-primary hover:underline"
-            href="mailto:ip@huzhihui.com"
+            href="mailto:dq686@outlook.com"
           >
-            ip@huzhihui.com
+            dq686@outlook.com
           </a>
           <AuthorContact className="text-sm text-primary hover:underline">
-            {t("sites.wechat")}
+            {t("contact.telegram")}
           </AuthorContact>
         </div>
       </ToolCard>
